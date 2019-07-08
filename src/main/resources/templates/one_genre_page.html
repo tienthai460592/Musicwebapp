@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${genreOne.getName()}"></title>
+    <link rel="stylesheet" th:href="@{/one_genre_style.css}" type="text/css">
+</head>
+<body>
+
+<div th:replace="fragment_template :: navbar"></div>
+
+<div class="infoGenre" style="width: 50%">
+    <span class="info"><img th:src="@{/img/{pic}(pic=${genreOne.getPicture()})}" alt="eee" width="230px"></span>
+    <span class="info">
+    <p>
+        <h1 th:text="${genreOne.getName()}"></h1>
+        <h4 th:text="${genreOne.getDescription()}"></h4>
+        </p>
+
+</span>
+</div>
+
+<div class="musicOfGenres">
+    <h2> Related Music</h2>
+    <table>
+        <tr>
+            <td th:each="music:${genreOne.getMusic()}">
+                <a th:href="@{/musiclibrary/browse/{type}/{name}(type = ${music.getType()}, name=${music.getTitle()})}"
+                   style="padding-right: 70px"><img th:src="@{/img/{pic}(pic=${music.getPic()})}" alt="eee"
+                                                    width="180px"> <h5 th:text="${music.getTitle()}"
+                                                                       style="text-align: left"></h5></a>
+            </td>
+
+        </tr>
+    </table>
+
+</div>
+
+<div class="artistOfGenres">
+    <h2> Related Artists</h2>
+    <table>
+        <tr>
+            <td th:each="artist:${genreOne.getArtistsOfGenre()}">
+                <a th:href="@{/musiclibrary/artist/{name}(name=${artist.getName()})}" style="padding-right: 70px"><img
+                        th:src="@{/img/{pic}(pic=${artist.getPic()})}" alt="eee" width="180px"> <h5
+                        th:text="${artist.getName()}" style="text-align: left"></h5></a>
+            </td>
+        </tr>
+    </table>
+
+</div>
+</body>
+</html>

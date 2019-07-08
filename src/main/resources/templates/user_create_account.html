@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>New Account</title>
+</head>
+<body>
+<form action="#" th:action="@{/musiclibrary/account/}" th:object="${user}" method="post">
+    <p>First name: <input type="text" th:field="*{firstName}"/></p>
+    <p>Last name: <input type="text" th:field="*{lastName}"/></p>
+    <p>Email: <input type="text" th:field="*{email}"/></p>
+    <p>username: <input type="text" th:field="*{username}"/></p>
+    <p>password: <input type="password" th:field="*{password}"/></p>
+    <p><input type="submit"></p>
+</form>
+
+</body>
+</html>

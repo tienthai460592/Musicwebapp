@@ -1,0 +1,26 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Log in</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+<h1 style="position: relative;left: 80px">User Account</h1>
+<form action="/musiclibrary/userlogin" method="post" style="position: relative;left: 100px">
+    <strong>Username</strong><br/>
+    <input type="text" placeholder="Enter username" name="username" required><br/>
+
+    <strong>Password</strong><br/>
+    <input type="password" placeholder="Enter password" name="password" required><br/>
+
+    <input type="submit"/>
+</form>
+<div th:if="${errormessage}">
+    <h2 th:text="${errormessage}">Error message</h2>
+</div>
+
+<div class="createAccount" style="position: relative;top: 30px;left: 100px">
+    <a href="user_create_account.html" th:href="@{/musiclibrary/account/}">New Account</a>
+</div>
+</body>
+</html>

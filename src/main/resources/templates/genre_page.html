@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Genre</title>
+    <link rel="stylesheet" th:href="@{/genre_page_style.css}" type="text/css">
+
+</head>
+<body>
+<header>GENRE</header>
+
+<div th:replace="fragment_template::navbar"></div>
+
+<div class="table">
+    <table style="width:100%">
+        <tr>
+            <td valign="top">
+                <ul th:each="genre:${genres0}">
+                    <a th:href="@{/musiclibrary/genre/{name}(name=${genre.getName()})}"><img
+                            th:src="@{/img/{pic}(pic=${genre.getPicture()})}" alt="eee" width="200px"
+                            height="130px"></a>
+                    <h2 th:text="${genre.getName()}"></h2>
+                </ul>
+            </td>
+            <td valign="top">
+                <ul th:each="genre:${genres1}">
+                    <a th:href="@{/musiclibrary/genre/{name}(name=${genre.getName()})}"><img
+                            th:src="@{/img/{pic}(pic=${genre.getPicture()})}" alt="eee" width="200px"
+                            height="130px"></a>
+                    <h2 th:text="${genre.getName()}"></h2>
+                </ul>
+            </td>
+            <td valign="top">
+                <ul th:each="genre:${genres2}">
+                    <a th:href="@{/musiclibrary/genre/{name}(name=${genre.getName()})}"><img
+                            th:src="@{/img/{pic}(pic=${genre.getPicture()})}" alt="eee" width="200px"
+                            height="130px"></a>
+                    <h2 th:text="${genre.getName()}"></h2>
+                </ul>
+            </td>
+            <td valign="top">
+                <ul th:each="genre:${genres3}">
+                    <a th:href="@{/musiclibrary/genre/{name}(name=${genre.getName()})}"><img
+                            th:src="@{/img/{pic}(pic=${genre.getPicture()})}" alt="eee" width="200px"
+                            height="130px"></a>
+                    <h2 th:text="${genre.getName()}"></h2>
+                </ul>
+            </td>
+        </tr>
+    </table>
+</div>
+
+
+</body>
+</html>

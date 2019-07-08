@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Artist</title>
+    <link type="text/css" th:href="@{/artist_page_style.css}" rel="stylesheet">
+</head>
+<body>
+<header>ARTIST</header>
+
+<div th:replace="fragment_template :: navbar"></div>
+
+
+<div class="table1">
+    <table style="width:100%">
+        <tr>
+            <td valign="top">
+                <ul th:each="artist:${artists0}">
+                    <a th:href="@{/musiclibrary/artist/{name}(name=${artist.getName()})}"><img
+                            th:src="@{/img/{pic}(pic=${artist.getPic()})}" alt="eee" width="150px"></a>
+                    <h3 th:text="${artist.getName()}"></h3>
+                </ul>
+            </td>
+            <td valign="top">
+                <ul th:each="artist:${artists1}">
+                    <a th:href="@{/musiclibrary/artist/{name}(name=${artist.getName()})}"><img
+                            th:src="@{/img/{pic}(pic=${artist.getPic()})}" alt="eee" width="150px"></a>
+                    <h3 th:text="${artist.getName()}"></h3></ul>
+            </td>
+            <td valign="top">
+                <ul th:each="artist:${artists2}">
+                    <a th:href="@{/musiclibrary/artist/{name}(name=${artist.getName()})}"><img
+                            th:src="@{/img/{pic}(pic=${artist.getPic()})}" alt="eee" width="150px"></a>
+                    <h3 th:text="${artist.getName()}"></h3></ul>
+            </td>
+            <td valign="top">
+                <ul th:each="artist:${artists3}">
+                    <a th:href="@{/musiclibrary/artist/{name}(name=${artist.getName()})}"><img
+                            th:src="@{/img/{pic}(pic=${artist.getPic()})}" alt="eee" width="150px"></a>
+                    <h3 th:text="${artist.getName()}"></h3></ul>
+            </td>
+        </tr>
+    </table>
+</div>
+
+
+</body>
+</html>

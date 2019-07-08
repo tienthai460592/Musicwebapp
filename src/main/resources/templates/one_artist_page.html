@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${artistOne.getName()}"></title>
+    <link rel="stylesheet" type="text/css" th:href="@{/one_artist_style.css}">
+</head>
+
+<body>
+<div th:replace="fragment_template::navbar" class="topnav">
+
+</div>
+
+
+<div class="infoArtist" style="width: 40%">
+    <span class="info"><img th:src="@{/img/{pic}(pic=${artistOne.getPic()})}" alt="eee" width="230px" style="position: relative; top: 100px" ></span>
+    <span class="info" style="float: right; padding-left: 20px">
+
+        <h1 th:text="${artistOne.getName()}"></h1>
+        <h4>Other name: <a th:text="${artistOne.getOtherName()}"></a></h4>
+        <h4>Home town: <a th:text="${artistOne.getHomeTown()}"></a></h4>
+        <h4>Born: <a th:text="${artistOne.getBorn()}"></a></h4>
+        <h4>Active since:<a th:text="${artistOne.getActiveSince()}"></a> </h4>
+        <h4>Labels: <a th:text="${artistOne.getLabel()}"></a></h4>
+        <h4>Genre: <a th:text="${artistOne.getGenreName()}"></a> </h4>
+
+</span>
+</div>
+
+<div class="albums" style="float: left">
+    <h2>ALBUM</h2>
+
+    <table>
+        <tr th:each="album: ${artistAlbums}">
+            <td><a th:href="@{/musiclibrary/browse/{type}/{name}(type = ${album.getType()}, name=${album.getTitle()})}">
+                <img
+                        th:src="@{/img/{pic}(pic=${album.getPic()})}" alt="eee" width="200px" height="200px"></a>
+                <h3 th:text="${album.getTitle()}"></h3></td>
+        </tr>
+    </table>
+</div>
+
+<div class="table">
+    <h2>SINGLE</h2>
+    <table style="width:100%" th:each="single: ${artistSingles}">
+        <tr>
+            <td style="width: 40%"><a th:text="${single.getTitle()}"
+                                      th:href="@{/musiclibrary/browse/{type}/{name}(type = ${single.getType()}, name=${single.getTitle()})}"></a></td>
+            <td th:text="${single.getGenreName()}"></td>
+            <td th:text="${single.getReleaseYear()}"></td>
+            <td th:text="${single.getFormat()}"></td>
+        </tr>
+
+    </table>
+</div>
+
+
+</body>
+</html>

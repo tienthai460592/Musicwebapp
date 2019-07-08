@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Search result</title>
+    <link th:href="@{/search_result_style.css}" type="text/css" rel="stylesheet">
+
+</head>
+<body>
+<div th:replace="fragment_template::navbar"></div>
+
+<h1>Search Result</h1>
+<br>
+
+
+<div th:if="${searchSongs.isEmpty()}">
+    No result found
+</div>
+
+<div th:unless="${searchSongs.isEmpty()}" class="table">
+    <table>
+        <tr>
+            <th>Song name</th>
+            <th>Genre</th>
+            <th>Artist</th>
+            <th>Release year</th>
+        </tr>
+        <tr th:each="song : ${searchSongs}">
+            <td><a th:href="@{/musiclibrary/browse/{type}/{name}(type = ${song.getType()}, name=${song.getTitle()})}"
+                   th:text="${song.getTitle()}"></a></td>
+            <td th:text="${song.getGenreName()}"></td>
+            <td><a th:href="@{/musiclibrary/artist/{name}(name = ${song.getArtist().getName()})}"
+                   th:text="${song.getArtist().getName()}"></a></td>
+            <td th:text="${song.getReleaseYear()}"></td>
+        </tr>
+    </table>
+</div>
+
+
+</body>
+</html>

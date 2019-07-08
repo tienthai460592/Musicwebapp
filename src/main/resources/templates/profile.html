@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Your Profile</title>
+</head>
+<style>
+    .topnav {
+        overflow: hidden;
+        float: right;
+    }
+
+    .topnav input[type=text] {
+        padding: 6px;
+        margin-top: 8px;
+        font-size: 17px;
+        border: none;
+    }
+
+    .topnav .search-container button:hover {
+        background: #ccc;
+    }
+
+    .topnav .search-container button {
+        padding: 6px 10px;
+        margin-top: 8px;
+        margin-right: 16px;
+        background: #ddd;
+        font-size: 17px;
+        border: none;
+        cursor: pointer;
+    }
+
+    .topnav .search-container {
+        float: right;
+    }
+
+
+    .topnav a {
+        float: left;
+        display: block;
+        color: black;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-size: 17px;
+    }
+
+    .topnav a:hover {
+        background-color: #ddd;
+        color: black;
+    }
+
+    .topnav a.browse {
+        padding-right: 50px;
+    }
+
+    .topnav a.active {
+        background-color: #dddddd;
+        color: black;
+    }
+</style>
+<body>
+<div th:replace="fragment_template::navbar"></div>
+<div class="table">
+    <h2>Your Profile detail</h2>
+    <table style="width:100%;position:relative;left: 100px;top:50px">
+        <tr>
+            <td>First name: <a th:text="${session.user.getFirstName()}"></a></td>
+        </tr>
+        <tr>
+            <td>Last name: <a th:text="${session.user.getLastName()}"></a></td>
+        </tr>
+        <tr>
+            <td>Username: <a th:text="${session.user.getUsername()}"></a></td>
+        </tr>
+        <tr>
+            <td>Email: <a th:text="${session.user.getEmail()}"></a></td>
+        </tr>
+        <tr>
+            <td>Password: <a th:text="${session.user.getPassword()}"></a></td>
+        </tr>
+        <tr>
+            <td>Do you want to log out of your account?
+                <form action="/musiclibrary/account/logout" method="post">
+                    <input type="submit" value="Logout"/>
+                </form>
+            </td>
+        </tr>
+        <tr>
+            <td>Do you want to change you username?
+                <form action="/musiclibrary/username" method="get">
+                    <input type="submit" value="Change username"/>
+                </form>
+            </td>
+        </tr>
+        <tr>
+            <td>Do you want to change you username?
+                <form action="/musiclibrary/account/delete" method="post">
+                    <input type="submit" value="Delete this account"/>
+                </form>
+            </td>
+        </tr>
+
+    </table>
+</div>
+
+
+</body>
+</html>

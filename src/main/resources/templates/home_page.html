@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Music Library</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/home_page_style.css}">
+</head>
+
+<style>
+
+    .topnav .account {
+        float: right;
+        padding: 6px 10px;
+        margin-top: 4px;
+        margin-right: 16px;
+    }
+
+
+    .topnav a {
+        float: left;
+        display: block;
+        color: black;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-size: 17px;
+    }
+
+    .topnav a:hover {
+        background-color: #ddd;
+        color: black;
+    }
+
+    .topnav a.browse {
+        padding-right: 50px;
+
+
+    }
+</style>
+<body>
+<h1>MUSICLIBRARY</h1>
+
+<div class="topnav" style="float: right">
+
+    <a class="browse" th:if="${session.username} != null" href="browsing_page.html" th:href="@{/musiclibrary/browse}">
+        Browse
+    </a>
+    <a class="browse" th:if="${session.username} == null" href="#bottom">
+        Browse
+    </a>
+    <a class="account" th:if="${session.user}==null" href="loginform.html" th:href="@{/musiclibrary/userlogin}"><img
+            width="30px" th:src="@{/img/account.png}" alt="account photo"></a>
+    <a class="account" th:if="${session.user}!= null" href="#bottom"><img width="30px" th:src="@{/img/account.png}"
+                                                                          alt="account photo"></a>
+</div>
+
+
+<div class="pic1"><img src="../static/img/photo1.jpeg" width="1200px" height="600px" th:src="@{/img/photo1.jpeg}"
+                       alt="photo1"/></div>
+<div class="secondPic">
+    <img src="../static/img/picture2.jpeg"
+         width="600px" th:src="@{/img/picture2.jpeg}" alt="2pic"/>
+    <a th:if="${session.username} != null" class="artist" href="artist_page.html" th:href="@{/musiclibrary/artist}">Artist</a>
+    <a th:if="${session.username} == null" href="#bottom" class="artist">Artist</a>
+
+</div>
+
+
+<div class="thirdPic ">
+    <img src="../static/img/chord.jpg" width="600px" th:src="@{/img/chord.jpg}" alt="pic3">
+</div>
+<div style="float: right; text-align: left; line-height: 6px; margin-right: 150px; margin-top: 100px">
+
+    <p style="font-size: 30px; font-style: oblique">Customize your</p>
+    <p style="font-style: oblique; font-size: 30px"> collection</p>
+    <p style="font-size: 18px; font-style: normal">Keep your favourite song organized</p>
+    <p style="font-style: normal; font-size: 18px">in a fun way</p>
+    <br>
+    <h3><a th:if="${session.username} != null" th:href="@{/musiclibrary/browse}"> Start browsing</a></h3>
+    <h3><a th:if="${session.username} == null" href="#bottom"> Start browsing</a></h3>
+
+</div>
+
+
+<div id="bottom" style="position: relative; top: 500px; left: 200px; text-align: center;height: 50px;font-size: 20px">
+    <div th:if="${session.username} != null">Welcome back <a th:href="@{/musiclibrary/user/profile}"
+                                                            th:text="${session.user.getFirstName()} ">!</a></div>
+    <div th:if="${session.username} == null"> You have to <a th:href="@{/musiclibrary/userlogin}">LOG IN </a> to be able
+        to use this function
+    </div>
+</div>
+
+</body>
+</html>

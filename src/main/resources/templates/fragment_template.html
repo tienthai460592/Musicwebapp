@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link type="text/css" th:href="@{/fragment_style.css}" rel="stylesheet">
+
+</head>
+<body>
+
+<div th:fragment="navbar" class="topnav">
+    <a href="home_page.html" th:href="@{/musiclibrary/home}">Home</a>
+    <a href="browsing_page.html" th:href="@{/musiclibrary/browse}">All songs</a>
+    <a href="genre_page.html" th:href="@{/musiclibrary/genre}">Genre</a>
+    <a href="artist_page.html" th:href="@{/musiclibrary/artist}">Artist</a>
+    <div class="search-container">
+        <form th:action="@{/musiclibrary/browse/}">
+            <input type="text" placeholder="Search for music.." name="search">
+            <button type="submit" value="Search"><img width="18px" th:src="@{/img/searchtool.png}" alt="search photo">
+            </button>
+        </form>
+    </div>
+</div>
+
+
+</body>
+</html>

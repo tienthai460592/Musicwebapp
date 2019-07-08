@@ -1,0 +1,22 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Change username</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+
+<body>
+
+
+<h1 style="position: relative;left: 80px">Change username</h1>
+<form th:action="@{/musiclibrary/username}" method="post" style="position: relative;left: 100px">
+    <strong>Enter new username</strong><br/>
+    <input type="text" placeholder="Enter username" name="newName" required ><br/>
+    <input type="submit"/>
+</form>
+<a th:href="@{/musiclibrary/user/profile}"> Cancel </a>
+<div th:if="${errormessage}">
+    <h2 th:text="${errormessage}">Error message</h2>
+</div>
+</body>
+</html>

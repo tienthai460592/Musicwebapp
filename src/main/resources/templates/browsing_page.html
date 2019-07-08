@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Browse</title>
+    <link type="text/css" th:href="@{/browse_page_style.css}" rel="stylesheet">
+
+</head>
+<body>
+<header>
+    All SONG
+</header>
+
+<div th:replace="fragment_template::navbar"></div>
+
+
+<div class="table">
+    <table style="width:1000px">
+        <tr th:each="music:${musics}">
+            <td>
+                <a th:href="@{/musiclibrary/browse/{type}/{name}(type = ${music.getType()}, name=${music.getTitle()})}"
+                   th:text="${music.getTitle()}">
+                </a>
+            </td>
+            <td th:text="${music.getGenreName()}"></td>
+            <td th:text="${music.getReleaseYear()}"></td>
+            <td th:text="${music.getType()}"></td>
+        </tr>
+
+    </table>
+</div>
+
+</body>
+</html>

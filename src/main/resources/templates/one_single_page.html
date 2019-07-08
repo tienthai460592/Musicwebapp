@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${singleOneSong.getTitle()}"></title>
+    <link th:href="@{/one_single_style.css}" type="text/css" rel="stylesheet">
+</head>
+<body>
+
+<div th:replace="fragment_template::navbar"></div>
+
+<title th:text="${singleOneSong.getTitle()}"></title>
+
+<div><img th:src="@{/img/{pic}(pic=${singleOneSong.getPic()})}" alt="eee" width="200px" height="200px"
+          style="position: relative; left: 600px; top: 100px"></div>
+<h2 th:text="${singleOneSong.getTitle()}" style="text-align: center; position:relative;top: 200px"></h2>
+<h3 style="text-align: center;position: relative;top: 80px">Artist: <a th:text="${singleOneSong.getArtist().getName()}"
+                                                                       th:href="@{/musiclibrary/artist/{name}(name=${singleOneSong.getArtist().getName()})}"></a>
+</h3>
+<div class="table" style="position: relative; top: 200px;left: 200px;">
+    <table style="width:1000px">
+        <tr>
+            <td>Release year: <a th:text="${singleOneSong.getReleaseYear()}"></a></td>
+            <td>Genre: <a th:text="${singleOneSong.getGenre()}"></a></td>
+            <td>Length: <a th:text="${singleOneSong.getLength()}"></a></td>
+            <td>Format: <a th:text="${singleOneSong.getFormat()}"></a></td>
+        </tr>
+
+    </table>
+</div>
+</body>
+
+</html>
